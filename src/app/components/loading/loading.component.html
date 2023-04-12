@@ -1,1 +1,6 @@
-<p>loading works!</p>
+<div class="loading-container" *ngIf="this.loadingService.loading$ | async">
+    <div class="content-loading w-100 m-auto text-center">
+        <div class="spinner is-animating"></div>
+    </div>
+    <div class="block-toutch-loading"></div>
+</div>
