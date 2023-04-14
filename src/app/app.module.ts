@@ -10,6 +10,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     LoadingComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,

@@ -18,21 +18,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      registration: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
 
   async handleLogin() {
     var loginData = this.loginForm.getRawValue() as LoginModel;
-    // this.dataService.login(loginData).subscribe((user: UserModel) => {
-    //   localStorage.setItem("erabizaileak", JSON.stringify(user));
-    //   this.router.navigate(["/home"]);
-    // });
 
     this.loadingService.show();
-    const result = await this.dataService.login();
+    const result = await this.dataService.login(loginData.email, loginData.password);
     console.log(result);
+    if (!result.success) {
+      this.loadingService.hide();
+      alert(result.errors[0].message);
+      return;
+    }
+    
     localStorage.setItem("erabizaileak", JSON.stringify(result));
       this.router.navigate(["/home"]);
     this.loadingService.hide();
